@@ -3,26 +3,25 @@ import os
 from  gtts import gTTS
 import os
 
-library = ['word', 'forest', 'butterfly', 'fly', 'house', 'random', 'laptop', 'neighbour', 'uncle', 'human', 'magnificent', 'library', 'satisfying', 'ocean', 'landscape', 'chicken', 'unic', 'offer', 'procrastination', 'collection']
-random_word = random.choice(library)
-word = ['*' for x in range(len(random_word))]
+#list with words to guess
+library = ['word', 'forest', 'butterfly', 'fly', 'house', 'random', 'laptop', 'neighbour', 'uncle', 'human', 'magnificent', 'library', 'satisfying', 'ocean', 'landscape', 'chicken', 'unique', 'offer', 'procrastination', 'collection']
+random_word = random.choice(library) #choosing random word
+word = ['*' for x in range(len(random_word))] #changing every letter in chosen word with '*' character
 
-# word_sound = gTTS(text=random_word, lang='en', slow=False)
-win = f"Congratulations the word is {random_word}"
-lose = "I can smell your ass burning"
-language = 'en'
-lose_sound = gTTS(text=lose, lang=language, slow=False)
-win_sound = gTTS(text=win, lang = language, slow = False)
-# word_sound.save('word.mp3')
-lose_sound.save('lose.mp3')
-win_sound.save('done.mp3')
+win = f"Congratulations the word is {random_word}" #text for win sound
+lose = "I can smell your ass burning" #text for lose sound
+language = 'en' #language setting for audio file
+lose_sound = gTTS(text=lose, lang=language, slow=False) # creating lose audio file
+win_sound = gTTS(text=win, lang = language, slow = False) # creating win audio file
+lose_sound.save('lose.mp3') # saving lose audio file
+win_sound.save('done.mp3') # saving win audio file
 
 
-print(f'Try to guess the word {word}')
+print(f'Try to guess the word {word}') # displaying coded word on the screen
 
-def hanged_man(word = word, tries = 0):
-	while tries < 5:
-		guess = str(input('Guess the letter: '))
+def hanged_man(word = word, tries = 0): 
+	while tries < 5: # number of tries
+		guess = str(input('Guess the letter: ')) # input guess letter
 		if guess in random_word:
 			for ind, item in enumerate(random_word):
 				if item==guess:
@@ -30,7 +29,6 @@ def hanged_man(word = word, tries = 0):
 					if '*' in word:
 						print(f'Good one! There is letter "{guess}"! And now word looks like {word}')
 					else:
-						# os.system('word.mp3')
 						os.system('done.mp3')
 						return f'Congratulations! The word is {"".join(word)}'
 		else:
