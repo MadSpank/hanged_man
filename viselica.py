@@ -1,7 +1,6 @@
 import random
 import os
 from  gtts import gTTS
-import os
 
 #list with words to guess
 library = ['word', 'forest', 'butterfly', 'fly', 'house', 'random', 'laptop', 'neighbour', 'uncle', 'human', 'magnificent', 'library', 'satisfying', 'ocean', 'landscape', 'chicken', 'unique', 'offer', 'procrastination', 'collection']
